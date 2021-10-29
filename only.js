@@ -1451,7 +1451,7 @@ async function saveKazna()
 	require('fs').writeFileSync('./base/kazna.json', JSON.stringify(users, null, '\t'));
 	return true;
 }
-
+  
 
 vk.setOptions({ token: '2b4918c44f8fd503258e963a2b5004dd41508e5e3cc27e63ef56b219ab95adcefe5bca5812e73d39086fd', pollingGroupId:197675118 });
 const { updates, snippets } = vk;
@@ -2530,7 +2530,7 @@ cmd.on(/^(?:warn)\s?([0-9]+)?\s([^]+)?/i, async (message, args, bot) => {
 		return message.send(`✅ » Вы выдали предупреждение игроку [${users[message.args[1]].tag}].`);
 	}); 
 
-cmd.on(/^(?:бонус|@club195595178|💎Бонус )$/i, async (message, bot) => {
+cmd.on(/^(?:бонус|@club195595178|💎Бонус|💎 Бонус)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	if(message.user.timers.bonus == true) return bot(`Бонус можно взять через 24 часа`) 
 let prize = utils.pick([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]); 
@@ -2876,7 +2876,7 @@ cmd.on(/^(?:промокод)\s?([^]+)?/i, async (message, args, bot) => {
  	return 
  });
 
-cmd.on(/^(?:топ)$/i, async (message, bot) => {
+cmd.on(/^(?:🏆 Топ|топ)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	let top = [];
 
@@ -3097,6 +3097,14 @@ cmd.on(/^(?:помощь|📚 Помощь|команды|меню|help|commands
 				"label": "💡 Разное"
 		},
 			"color": "secondary"
+									}],
+		[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "📦 Кейсы"
+		},
+			"color": "positive"
 			
 }
 ]
@@ -3104,7 +3112,1442 @@ cmd.on(/^(?:помощь|📚 Помощь|команды|меню|help|commands
 		})
 })
 });
-cmd.on(/^(?:сундуки|кейсы|📦 кейсы|📦 сундуки)$/i, async (message, bot) => {
+
+cmd.on(/^(?:открыть 1|сундук открыть 1|кейс открыть 1|📦 Кейс открыть 1)$/i, async (message, bot) => {
+	
+		if(!message.user.case1) return bot(`у вас нет типа кейсов «стандартный» 😬`); 
+		message.user.case1 -= 1;
+	
+		let prize2 = utils.pick([1, 1, 2, 3, 4, 5, 6, 7, 8]);
+		let rat = utils.random(250, 390);
+		let op = utils.random(1, 75);
+		let bablo = utils.pick([39000000000, 39000000000, 51000000000, 39000000000, 39000000000, 39000000000, 51000000000, 39000000000, 51000000000, 39000000000, 51000000000, 39000000000, 51000000000, 78000000000, 98000000000, 108000000000, 42000000000, 350000000000, 61000000000])
+	
+		if(prize2 === 1)
+		{
+			message.user.opit += op;
+			return bot(`вы выиграли ${utils.sp(op)} опыта 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text",
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	},
+	"color": "primary"
+	}] 
+	] 
+	}) 
+	});
+		}
+	
+		if(prize2 === 2)
+		{
+			message.user.opit += op;
+			return bot(`вы выиграли ${utils.sp(op)} опыта 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text", 
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	}, 
+	"color": "primary" 
+	}] 
+	] 
+	}) 
+	});
+		}
+	
+		if(prize2 === 3)
+		{
+			message.user.opit += op;
+			return bot(`вы выиграли ${utils.sp(op)} опыта 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text", 
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	}, 
+	"color": "primary" 
+	}] 
+	] 
+	}) 
+	});
+		}
+	
+		if(prize2 === 4)
+		{
+			message.user.balance += bablo;
+			return bot(`вы выиграли ${utils.sp(bablo)}$ 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text", 
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	}, 
+	"color": "primary" 
+	}] 
+	] 
+	}) 
+	});
+		}
+	
+		if(prize2 === 5)
+		{
+			message.user.balance += bablo;
+			return bot(`вы выиграли ${utils.sp(bablo)}$ 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text", 
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	}, 
+	"color": "primary" 
+	}] 
+	] 
+	}) 
+	});
+		}
+	
+		if(prize2 === 6)
+		{
+			message.user.rating += rat;
+			return bot(`вы выиграли ${utils.sp(rat)} рейтинга 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text", 
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	}, 
+	"color": "primary" 
+	}] 
+	] 
+	}) 
+	});
+		}
+		if(prize2 === 7)
+		{
+			message.user.rating += rat;
+			return bot(`вы выиграли ${utils.sp(rat)} рейтинга 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text", 
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	}, 
+	"color": "primary" 
+	}] 
+	] 
+	}) 
+	});
+		}
+});
+cmd.on(/^(?:открыть 2|сундук открыть 2|кейс открыть 2|📦 кейс открыть 2)$/i, async (message, bot) => {
+
+	if(!message.user.case2) return bot(`у вас нет кейсов ${smileerror}.`); 
+	message.user.case2 -= 1;
+
+	let prize2 = utils.pick([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+	let opitik = utils.pick([324, 141, 254, 174, 401, 224])
+	let bablo = utils.pick([2400000000000, 2400000000000, 2400000000000, 2400000000000, 2400000000000, 2400000000000, 2400000000000, 3100000000000, 3100000000000, 3100000000000, 3100000000000, 4800000000000, 7000000000000, 12000000000000, 15000000000000])
+
+	if(prize2 === 1)
+	{
+		message.user.opit += opitik;
+		return bot(`вы выиграли ${opitik} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 2)
+	{
+		message.user.opit += opitik;
+		return bot(`вы выиграли ${opitik} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 3)
+	{
+		message.user.opit += opitik;
+		return bot(`вы выиграли ${opitik} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 4)
+	{
+		message.user.balance += bablo;
+		return bot(`вы выиграли ${utils.sp(bablo)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 5)
+	{
+		message.user.balance += bablo;
+		return bot(`вы выиграли ${utils.sp(bablo)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 6)
+	{
+		message.user.rating += 32000;
+		return bot(`вы выиграли 32.000 рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 7)
+	{
+		message.user.rating += 11390;
+		return bot(`вы выиграли 11.390 рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 8)
+	{
+		message.user.case2 += 1;
+		return bot(`вы выиграли повторную попытку. 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 9)
+	{
+		message.user.balance += bablo;
+		return bot(`вы выиграли ${utils.sp(bablo)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 10)
+	{
+		message.user.rating += 7722;
+		return bot(`вы выиграли 7.772 рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 11)
+	{
+		message.user.rating += 14039;
+		return bot(`вы выиграли 14.039 рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 12)
+	{
+		message.user.balance += bablo;
+		return bot(`вы выиграли ${utils.sp(bablo)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 13)
+	{
+		message.user.rating += 24084;
+		return bot(`вы выиграли 24.084 рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 14)
+	{
+		message.user.rating += 32741;
+		return bot(`вы выиграли 32.741 рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 2` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+});
+
+cmd.on(/^(?:открыть 3|сундук открыть 3|кейс открыть 3)$/i, async (message, bot) => {
+
+	if(message.user.case3 == 0) return bot(`у вас нет кейсов ${smileerror}.`); 
+	message.user.case3 -= 1;
+
+	let prize2 = utils.pick([1, 2, 3, 4, 5, 6, 7, 8]);
+
+	if(prize2 === 1)
+	{
+		message.user.opit += 122;
+		return bot(`вы выиграли 122 опыта 🏆 ${smileerror}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 6)
+	{
+		message.user.rating += 1236;
+		return bot(`вы выиграли 1.236 рейтинга 🔥 ${smileerror}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 7)
+	{
+		message.user.rating += 1254;
+		return bot(`вы выиграли 1.254 рейтинга 🔥 ${smileerror}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 8)
+	{
+		message.user.rating += 3314;
+		return bot(`вы выиграли 3.314 рейтинга 🔥 ${smileerror}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 2)
+	{
+		message.user.opit += 258;
+		return bot(`вы выиграли 258 опыта 🏆 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 3)
+	{
+		message.user.opit += 350;
+		return bot(`вы выиграли 350 опыта 🏆 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 4)
+	{
+		message.user.balance += 2000000000000;
+		return bot(`вы выиграли 2.000.000.000.000$ ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 5)
+	{
+		message.user.balance += 5500000000000;
+		return bot(`вы выиграли 5.500.000.000.000$ ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 3` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+});
+
+cmd.on(/^(?:открыть 4|сундук открыть 4|кейс открыть 4)$/i, async (message, bot) => {
+
+	if(message.user.case4 == 0) return bot(`у вас нет кейсов ${smileerror}.`); 
+	message.user.case4 -= 1;
+
+	let prize2 = utils.pick([1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14]);
+
+	if(prize2 === 1)
+	{
+		message.user.opit += 154;
+		return bot(`вы выиграли 154 опыта 🏆 ${smileerror}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 2)
+	{
+		message.user.opit += 454;
+		return bot(`вы выиграли 454 опыта 🏆 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 3)
+	{
+		message.user.opit += 324;
+		return bot(`вы выиграли 324 опыта 🏆 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 4)
+	{
+		message.user.balance += 5000000000000;
+		return bot(`вы выиграли 5.000.000.000.000$ ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 5)
+	{
+		message.user.balance += 10000000000000;
+		return bot(`вы выиграли 10.000.000.000.000$ ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 6)
+	{
+		message.user.btc += 100000000;
+		return bot(`вы выиграли 100.000.000 биткоинов ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 10)
+	{
+		message.user.rating += 11272;
+		return bot(`вы выиграли 11.272 рейтинга 👑 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 11)
+	{
+		message.user.rating += 13429;
+		return bot(`вы выиграли 13.429 рейтинга 👑 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 12)
+	{
+		message.user.balance += 3500000000000;
+		return bot(`вы выиграли 3.500.000.000.000$ ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 13)
+	{
+		message.user.rating += 86324;
+		return bot(`вы выиграли 83.264 рейтинга 👑 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 14)
+	{
+		message.user.rating += 24321;
+		return bot(`вы выиграли 24.321 рейтинга 👑 ${smilesuccess}`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `Кейс открыть 4` 
+}, 
+"color": "positive" 
+}] 
+] 
+}) 
+});
+	}
+});
+
+cmd.on(/^(?:открыть 5|сундук открыть 5|кейс открыть 5|📦 Кейс открыть 5)$/i, async (message, bot) => {
+
+	if(!message.user.case5) return bot(`у вас нет типа кейсов «секретный» 😬`); 
+	message.user.case5 -= 1;
+
+	let prize2 = utils.pick([1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14]);
+	let op = utils.pick([500, 1000, 750, 1500, 2000, 3000, 4000, 5000]);
+	let denga = utils.pick([1000000000000, 3000000000000, 5000000000000, 10000000000000, 25000000000000]);
+	let rat = utils.random(10000, 100000);
+
+	if(prize2 === 1)
+	{
+		message.user.opit += op;
+		return bot(`вы нашли ${utils.sp(op)} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 2)
+	{
+		message.user.opit += op;
+		return bot(`вы нашли ${utils.sp(op)} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 3)
+	{
+		message.user.opit += op;
+		return bot(`вы нашли ${utils.sp(op)} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 4)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 5)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 6)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 10)
+	{
+		message.user.rating += rat;
+		return bot(`вы нашли ${utils.sp(rat)} рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 11)
+	{
+		message.user.rating += rat;
+		return bot(`вы нашли ${utils.sp(rat)} рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 12)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 13)
+	{
+		message.user.balance += 250000000000000;
+		return bot(`вы нашли «Компания Орифлейм» 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `🆘 Бизнесы 11` 
+}, 
+"color": "negative" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 14)
+	{
+		message.user.settings.adm = 2;
+		return bot(`вы нашли «VIP статус» 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 5` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+});
+
+cmd.on(/^(?:босс жизни)\s([0-9]+)\s([0-9]+)$/i, async (message, bot) => {
+	if(message.senderId !== l581452157) return;
+	message.args[1] = Number(message.args[1]); // жизни босса 
+	message.args[2] = Number(message.args[2]); // а тут максимальные жизни босса
+	boss.boss = message.args[1];
+	boss.boss_max = message.args[2];
+	return bot(`жизни босса обновлены`);
+});
+
+cmd.on(/^(?:открыть 6|сундук открыть 6|кейс открыть 6|📦 Кейс открыть 6)$/i, async (message, bot) => {
+
+	if(!message.user.case6) return bot(`у вас нет типа кейсов «Премиум» 😬`); 
+	message.user.case6 -= 1;
+
+	let prize2 = utils.pick([1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14]);
+	let op = utils.pick([500, 1000, 750, 1500, 2000, 3000, 4000, 5000]);
+	let denga = utils.pick([1000000000000, 3000000000000, 5000000000000, 10000000000000, 25000000000000]);
+	let rat = utils.random(10000, 100000);
+
+	if(prize2 === 1)
+	{
+		message.user.opit += op;
+		return bot(`вы нашли ${utils.sp(op)} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 2)
+	{
+		message.user.opit += op;
+		return bot(`вы нашли ${utils.sp(op)} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 3)
+	{
+		message.user.opit += op;
+		return bot(`вы нашли ${utils.sp(op)} опыта 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 4)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 5)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 6)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 10)
+	{
+		message.user.rating += rat;
+		return bot(`вы нашли ${utils.sp(rat)} рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 11)
+	{
+		message.user.rating += rat;
+		return bot(`вы нашли ${utils.sp(rat)} рейтинга 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 12)
+	{
+		message.user.balance += denga;
+		return bot(`вы нашли ${utils.sp(denga)}$ игровой валюты 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+
+	if(prize2 === 13)
+	{
+		message.user.balance += 250000000000000;
+		return bot(`вы нашли «Компания Орифлейм» 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `🆘 Бизнесы 11` 
+}, 
+"color": "negative" 
+}] 
+] 
+}) 
+});
+	}
+	if(prize2 === 14)
+	{
+		message.user.settings.adm = 2;
+		return bot(`вы нашли «VIP статус» 🔥`, 
+{ 
+keyboard:JSON.stringify( 
+{
+"inline": true,
+"buttons": [ 
+[{ 
+"action": { 
+"type": "text", 
+"payload": "{}", 
+"label": `📦 Кейс открыть 6` 
+}, 
+"color": "primary" 
+}] 
+] 
+}) 
+});
+	}
+});
+
+cmd.on(/^(?:кейс инфо 1)/i, async (message) => {
+	return message.send(`🔥 Из «Начинающего» кейса может выпасть:
+	1⃣ Опыт 
+	2⃣ Рейтинг 
+	3⃣ Игровая валюта`)
+	
+	});
+	
+	cmd.on(/^(?:кейс инфо 2)/i, async (message) => {
+	return message.send(`🔥 Из «Платинум» кейса может выпасть: 
+	
+	1⃣ Опыт 
+	2⃣ Рейтинг 
+	3⃣ Игровая валюта
+	
+	*в отличии от начинающего кейса, в платинум кейсе выпадают призы в 50-ти кратном размере.`)
+	
+	});
+	
+	cmd.on(/^(?:сундуки|кейсы|📦 кейсы|📦 сундуки)$/i, async (message, bot) => {
 			let text = ``;
 		
 	text += `\n1&#8419; Начинающий кейс - 50 млрд$
@@ -3125,29 +4568,45 @@ cmd.on(/^(?:сундуки|кейсы|📦 кейсы|📦 сундуки)$/i, a
 	if(message.user.case6) text += `⠀⠀ 📦 Премиум кейс (${utils.sp(message.user.case6)} шт.)\n⠀⠀ 📜 Открыть: «кейс открыть 6»\n`
 	}
 	
-	return bot(`ваши кейсы:\n${text}`);
-	
-			});
+	return bot(`ваши кейсы:\n${text}`,	{
+			keyboard:JSON.stringify(
+		{
+			"inline": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "Кейс инфо1"
+		},
+			"color": "positive"
+					},
+		{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "Кейс инфо 2"
+		},
+			"color": "secondary"
+			}],
+		[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "В меню"
+		},
+			"color": "primary"
+			
+}
+]
+]
+		})
+})
+});
+
 	
 
-	cmd.on(/^(?:кейс инфо 1)/i, async (message) => {
-	return message.send(`🔥 Из «Начинающего» кейса может выпасть:
-	1⃣ Опыт 
-	2⃣ Рейтинг 
-	3⃣ Игровая валюта`)
 	
-	});
-	
-	cmd.on(/^(?:кейс инфо 2)/i, async (message) => {
-	return message.send(`🔥 Из «Платинум» кейса может выпасть: 
-	
-	1⃣ Опыт 
-	2⃣ Рейтинг 
-	3⃣ Игровая валюта
-	
-	*в отличии от начинающего кейса, в платинум кейсе выпадают призы в 50-ти кратном размере.`)
-	
-	});
 		cmd.on(/^(?:кейсы 1)\s(.*)$/i, async (message, bot) => {
 	message.args[1] = message.args[1].replace(/(\.|\,)/ig, '');
 	message.args[1] = message.args[1].replace(/(к|k)/ig, '000');
@@ -3210,7 +4669,7 @@ cmd.on(/^(?:дайвинг|плавать|🎏 дайвинг|🎣 плават�
 		
 			
 			let denyushka = 0;
-			denyushka += utils.pick([500000000, 7500000000, 1000000000, 2500000000]);
+			denyushka += utils.pick([50000, 750000, 100000, 250000]);
 		
 			if(message.isChat) 
 		{ 
@@ -3272,6 +4731,76 @@ cmd.on(/^(?:дайвинг|плавать|🎏 дайвинг|🎣 плават�
 			}
 		
 		});
+		cmd.on(/^(?:🎃 Хэллоуин|🎃 хеллоуин|хеллоуин|хэллоуин)$/i, async (message, bot) => { 
+			
+			if(message.user.timers.daiving > Date.now()) return bot(`Вам следует отдохнуть, подождите 5 минут 🎃`,message.sendSticker(53483)); 
+		
+			 message.user.timers.daiving = Date.now() + 300000; 
+		
+			 let prize = utils.pick([1, 1, 2, 2, 3, 4]); 
+		
+		
+			
+			let denyushka = 0;
+			denyushka += utils.pick([50000, 750000, 100000, 250000]);
+		
+			if(message.isChat) 
+		{ 
+		setTimeout(() => { 
+		vk.api.messages.send({ chat_id: message.chatId, message: `@id${message.user.id} (${message.user.tag}), вы отдохнули, идем пугать людей 🎃!`, 
+		
+		keyboard:JSON.stringify( 
+		{ "inline": true, "buttons": [ 
+		[ 
+		{ "action": { "type": "text", "payload": "{}", "label": "🎃 Хэллоуин" }, "color": "primary" } 
+		] 
+		] 
+		}) 
+		}); 
+		}, 300000); 
+		} 
+		
+		if(!message.isChat) 
+		{ 
+		setTimeout(() => { 
+		vk.api.messages.send({ user_id: message.user.id, message: `@id${message.user.id} (${message.user.tag}), вы отдохнули, идем пугать людей 🎃!`, 
+		
+		keyboard:JSON.stringify( 
+		{ "inline": true, "buttons": [ 
+		[ 
+		{ "action": { "type": "text", "payload": "{}", "label": "🎃 Хэллоуин" }, "color": "primary" } 
+		] 
+		] 
+		}) 
+		}); 
+		}, 300000); 
+		}
+			
+		
+			if(prize === 1)
+			{
+				message.user.balance += denyushka;
+				bot(`Вы напугали 10 🎃 детей и за это вы получили 💰: ${utils.sp(denyushka)}$`, message.sendSticker(3362),{attachment: 'photo-197675118_457239858'});
+			}
+		
+			if(prize === 2)
+			{
+				message.user.balance += denyushka;
+				bot(`Вы собрали 150 конфет и за это вы получили 💰  ${utils.sp(denyushka)}$`,{attachment: 'photo-197675118_457239856'});
+			}
+		
+			if(prize === 3)
+			{
+				message.user.balance -= 100000;
+				bot(`Вам приснился Фредди Крюгер и украл у вас 100.000`,{attachment: 'photo-197675118_457239857'});
+			}
+		
+			if(prize === 4)
+			{
+				bot(`вы решили поверить в себя, и напали на Джейсона, за это вы ничего не получили`,{attachment: 'photo-197675118_457239859'});
+			}
+		
+		});
 		cmd.on(/^(?:охота|🏹 Охота|охотиться|сходить поохотиться|🏹 Охотиться|🏹 Охотиться!|🏹 Охота!)$/i, async (message, bot) => {
 	
 			if(message.user.timers.ohota > Date.now()) return bot(`вы недавно уже ходили на охоту и сильно устали, подождите 5 минут ⛱`);
@@ -3308,15 +4837,15 @@ cmd.on(/^(?:дайвинг|плавать|🎏 дайвинг|🎣 плават�
 			
 			if(prize === 1)
 			{
-				message.user.balance += 3000000000;
+				message.user.balance += 30000;
 				return bot(`вы сходили на охоту в лес, и вам удалось застрелить местного медведя 🐻
-				💰 За шкуру вам заплатили 3.000.000.000$`, {attachment: 'photo-192023992_467239161'});
+				💰 За шкуру вам заплатили 30000$`, {attachment: 'photo-192023992_467239161'});
 			}
 			if(prize === 2)
 			{
-				message.user.balance += 2000000000;
+				message.user.balance += 20000;
 				return bot(`пока вы блуждали по лесу, вы неожиданно встретили лису 🦊
-				💰 За хороший мех лисы вам заплатили 2.000.000.000$`, {attachment: 'photo-192023992_467239162'});
+				💰 За хороший мех лисы вам заплатили 20000$`, {attachment: 'photo-192023992_467239162'});
 			}
 			if(prize === 3)
 			{
@@ -3345,6 +4874,7 @@ cmd.on(/^(?:🎮 Игры|Игры)$/i, async (message, bot) => {
   🔫 Рулетка - русская рулетка
   🐠 Дайвинг - отправиться в плаванье
   🏹 Охота - Охота
+  🎃 Хэллоуин
   🎲 Кубик [1-6]
   🎰 Казино [сумма]
   📈 Трейд [вверх/вниз] [сумма]
@@ -3362,7 +4892,7 @@ cmd.on(/^(?:🎮 Игры|Игры)$/i, async (message, bot) => {
 				"payload": "{\"button\": \"2\"}",
 				"label": "🐠 Дайвинг"
 		},
-			"color": "primary"
+			"color": "secondary"
 					}],
 		[{
 				"action": {
@@ -3387,6 +4917,14 @@ cmd.on(/^(?:🎮 Игры|Игры)$/i, async (message, bot) => {
 				"label": "🏹 Охота"
 		},
 			"color": "secondary"
+						},
+		{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "🎃 Хэллоуин"
+		},
+			"color": "secondary"
 						}],
 		[{
 				"action": {
@@ -3405,7 +4943,7 @@ cmd.on(/^(?:🎮 Игры|Игры)$/i, async (message, bot) => {
 cmd.on(/^(?:💡 Разное|Разное)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	await bot(`   🌽 Питомец:
-🐒 Инфопет - информация
+🐒 Питомец - информация
 🐪 Питомец поход
 🌟 Питомец улучшить
 ➾➖➾➖➾➖➾➖➾➖➾
@@ -3569,7 +5107,7 @@ cmd.on(/^(?:💰 Доход|Доход|Заработок)$/i, async (message, b
 				"action": {
 				"type": "text",
 				"payload": "{\"button\": \"2\"}",
-				"label": "👔 Работы"
+				"label": "👔 Работать"
 		},
 			"color": "secondary"
 					},
@@ -4132,7 +5670,7 @@ message: `Ура!`
 }); 
 }, 500); 
 return message.send(`Процесс пошел`); 
-/// эту команду вставлять в бота с основой команды cmd.on или cmd.hear если у вас cmd.hear то on заменяете на hear!
+/// эту команду вставлять в бота с основой команды cmd.on или cmd.on если у вас cmd.on то on заменяете на hear!
 });
 
 cmd.on(/^(?:поиск)(\shttps\:\/\/vk\.com\/)?(id)?([0-9]+)?([^]+)?$/i, async (message, args, bot) => { 
@@ -4468,7 +6006,7 @@ cmd.on(/^(?:баланс|💸 Баланс)$/i, async (message, bot) => {
 	return bot(text);
 });
 
-cmd.on(/^(?:шахта)$/i, async (message, bot) => {
+cmd.on(/^(?:шахта|⛏)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	message.user.opit += 3000;
 	if(message.user.exp < 1) return bot(`мало опыта!`);
@@ -4500,7 +6038,32 @@ if(message.user.alvl <= 1) {
 		&#128155; Золото: ${utils.sp(golds)}
 		&#128142; Алмазов: ${utils.sp(diamondss)}
 		&#128160; Изумрудов: ${utils.sp(emeralds)}
-		💥 Заработано Опыта: 3000`);
+		💥 Заработано Опыта: 3000`, {
+			keyboard:JSON.stringify(
+		{
+			"inline": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "⛏"
+		},
+			"color": "secondary"
+					},
+		{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "В меню"
+		},
+			"color": "primary"
+			
+}
+]
+]
+		})
+})
 });
 
 
@@ -4684,7 +6247,7 @@ cmd.on(/^(?:ник)\s(.*)$/i, async (message, bot) => {
 	return bot(`Теперь ваш ник: "${message.user.tag}"`);
 			});
 
-cmd.on(/^(?:магазин)$/i, async (message, bot) => {
+cmd.on(/^(?:🛒 Магазин|магазин)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	return bot(`разделы магазина:
 🚙 Транспорт:
@@ -4963,7 +6526,7 @@ cmd.on(/^(?:Время|time)/i, async (msg, bot) => {
 });
 
 cmd.on(/^(?:машины|машина)\s?([0-9]+)?$/i, async (message, bot) => {
-		if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	message.user.foolder += 1;
 	if(!message.args[1]) return bot(`машины: 
 ${message.user.transport.car === 1 ? '🔹' : '🔸'} 1. Ferrari Enzo V5 (1.000.000₽)
@@ -4974,7 +6537,7 @@ ${message.user.transport.car === 5 ? '🔹' : '🔸'} 5. SSC Tuatara (59.000.000
 ${message.user.transport.car === 6 ? '🔹' : '🔸'} 6. Bugatti Veryon Super (80.000.000₽)
 ${message.user.transport.car === 7 ? '🔹' : '🔸'} 7. Лада Нива (100.000.000₽)
 ${message.user.transport.car === 8 ? '🔹' : '🔸'} 8. Лада Калина (300.000.000₽)
-Для покупки введите "Машина [номер]"`);
+Для покупки введите "Машины [номер]"`);
 
 	const sell = cars.find(x=> x.id === Number(message.args[1]));
 	if(!sell) return;
@@ -4991,7 +6554,7 @@ ${message.user.transport.car === 8 ? '🔹' : '🔸'} 8. Лада Калина (
 });
 cmd.on(/^(?:яхты|яхта)\s?([0-9]+)?$/i, async (message, bot) => {
 	message.user.foolder += 1;
-		if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	if(!message.args[1]) return bot(`яхты: 
 ${message.user.transport.yacht === 1 ? '🔹' : '🔸'} 1. Ванна (10.000₽)
 ${message.user.transport.yacht === 2 ? '🔹' : '🔸'} 2. Nauticat 331 (10.000.000₽)
@@ -5068,7 +6631,7 @@ cmd.on(/^(?:Гет)$/i, async (message, bot) => {
 
 cmd.on(/^(?:самол(?:е|ё)т|самол(?:е|ё)ты)\s?([0-9]+)?$/i, async (message, bot) => {
 	message.user.foolder += 1;
-		if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	if(!message.args[1]) return bot(`самолеты: 
 ${message.user.transport.airplane === 1 ? '🔹' : '🔸'} 1. Параплан (100.000₽)
 ${message.user.transport.airplane === 2 ? '🔹' : '🔸'} 2. АН-2 (350.000₽)
@@ -5106,7 +6669,7 @@ ${message.user.transport.airplane === 17 ? '🔹' : '🔸'} 17. B-2 Spirit Steal
 
 cmd.on(/^(?:вертол(?:е|ё)т|вертол(?:е|ё)ты)\s?([0-9]+)?$/i, async (message, bot) => {
 	message.user.foolder += 1;
-		if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	if(!message.args[1]) return bot(`вертолеты: 
 ${message.user.transport.helicopter === 1 ? '🔹' : '🔸'} 1. Шарик с пропеллером (2₽)
 ${message.user.transport.helicopter === 2 ? '🔹' : '🔸'} 2. RotorWay Exec 162F (300.000₽)
@@ -5186,7 +6749,7 @@ ${message.user.prefix === 15 ? '🔹' : '🔸'} 27. ||MaLoY||
 
 cmd.on(/^(?:дом|дома)\s?([0-9]+)?$/i, async (message, bot) => {
 	message.user.foolder += 1;
-	    if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+	    if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	if(!message.args[1]) return bot(`дома: 
 ${message.user.realty.home === 1 ? '🔹' : '🔸'} 1. Коттедж Медведева (4.500.000₽)
 ${message.user.realty.home === 2 ? '🔹' : '🔸'} 2. Особняк Порошенко (7.250.000₽)
@@ -5213,7 +6776,7 @@ ${message.user.realty.home === 6 ? '🔹' : '🔸'} 6. Белый дом Пут�
 
 cmd.on(/^(?:квартира|квартиры)\s?([0-9]+)?$/i, async (message, bot) => {
 	message.user.foolder += 1;
-		if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	if(!message.args[1]) return bot(`квартиры: 
 ${message.user.realty.apartment === 1 ? '🔹' : '🔸'} 1. Чердак (15.000$)
 ${message.user.realty.apartment === 2 ? '🔹' : '🔸'} 2. Квартира в общежитии (55.000₽)
@@ -5243,7 +6806,7 @@ ${message.user.realty.apartment === 8 ? '🔹' : '🔸'} 8. Квартира с 
 
 cmd.on(/^(?:телефон|телефоны)\s?([0-9]+)?$/i, async (message, bot) => {
 	message.user.foolder += 1;
-		if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	if(!message.args[1]) return bot(`телефоны: 
 ${message.user.misc.phone === 1 ? '🔹' : '🔸'} 1. Nokia 108 (2500₽)
 ${message.user.misc.phone === 2 ? '🔹' : '🔸'} 2. Nokia 3310 (2017) (5000₽)
@@ -5374,7 +6937,7 @@ ${message.user.misc.farm === 4 ? '🔹' : '🔸'} 4. FM2019-BTC2000 1000000฿/1
 		return bot(`вы купили "${sell.name}" за ${utils.sp(sell.cost)}₽`);
 	}
 });
-cmd.on(/^(?:рейтинг)\s(.*)$/i, async (message, bot) => {
+cmd.on(/^(?:👑 Рейтинг|рейтинг)\s(.*)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	if(message.user.alvl)return;
 	message.args[1] = message.args[1].replace(/(\.|\,)/ig, '');
@@ -5397,7 +6960,7 @@ cmd.on(/^(?:рейтинг)\s(.*)$/i, async (message, bot) => {
 });
 
 cmd.on(/^(?:бизнесы)\s?([0-9]+)?$/i, async (message, bot) => {
-if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 if(!message.args[1]) return bot(`Бизнесы:
 🔹 1. Шаурмичная - 50.000₽
 ⠀ 💰 Прибыль: 200₽/час
@@ -5442,12 +7005,37 @@ if(!message.args[1]) return bot(`Бизнесы:
 });
 
 
-cmd.on(/^(?:Рулетка)$/i, async (message, bot) => {
+cmd.on(/^(?:Рулетка|🔫 Рулетка)$/i, async (message, bot) => {
 
 
     if(message.user.balance == 0) return message.reply("🔔 Играть в игры можно с балансом выше 0! 🔔");
     if(message.user.pp == 1) return message.reply(`${message.user.tag}, ты уже в игре!`);
-	message.reply(`[💀] | ${message.user.tag}, Вы начали игру "Русская Рулетка"\n\n [🤤] | Задача этой игры: Вам дано 3 выстрела... Если в Вас не попала пуля, то мы дадим на ваш баланс 100.000$, а если в вас попала пуля, то весь ваш баланс обнуляется.\n\n[⚠] » Чтобы сделать выстрел, то отправьте боту - 🔫`);
+	message.reply(`[💀] | ${message.user.tag}, Вы начали игру "Русская Рулетка"\n\n [🤤] | Задача этой игры: Вам дано 3 выстрела... Если в Вас не попала пуля, то мы дадим на ваш баланс 100.000$, а если в вас попала пуля, то весь ваш баланс обнуляется.\n\n[⚠] » Чтобы сделать выстрел, то отправьте боту - 🔫`,	{
+			keyboard:JSON.stringify(
+		{
+			"inline": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "🔫"
+		},
+			"color": "secondary"
+					},
+		{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "В меню"
+		},
+			"color": "primary"
+			
+}
+]
+]
+		})
+})
 	return message.user.pp = 1;
 });
 
@@ -5472,7 +7060,32 @@ cmd.on(/^(?:🔫|выстрел)$/i, async (message, bot) => {
 			message.reply(`2...`);
 			message.reply(`3...`);
 			message.reply(`*БАХ!!*`);
-			return message.reply(`[😎] >> Пуля непопала вам в голову - вы выжили\n[🍀] » Вам повезло. Стреляйте дальше!\n[😧] » Осталось выстрелов: ` + p);
+			return message.reply(`[😎] >> Пуля непопала вам в голову - вы выжили\n[🍀] » Вам повезло. Стреляйте дальше!\n[😧] » Осталось выстрелов: ` + p,	{
+			keyboard:JSON.stringify(
+		{
+			"inline": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "🔫"
+		},
+			"color": "secondary"
+					},
+		{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "В меню"
+		},
+			"color": "primary"
+			
+}
+]
+]
+		})
+})
 
 		}
 		if(rand != "вы погибли"){
@@ -5584,7 +7197,7 @@ let prize = utils.pick([1]);
 });
 cmd.on(/^(?:брак)\s([0-9]+)$/i, async (message, bot) => {
 	message.user.foolder += 1;
-	if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+	if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	
 	if(message.user.marriage.partner) return bot(`вы уже в браке с игроком ${users[message.user.marriage.partner].tag}`);
 	if(Number(message.args[1]) === message.user.uid) return bot(`вы не можете жениться/выйти замуж за себя`);
@@ -5642,7 +7255,7 @@ cmd.on(/^(?:дата)\s([0-9]+)$/i, async (message, bot) => {
 });
 
 cmd.on(/^(?:работа)\s([0-9]+)$/i, async (message, bot) => {
-	if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"!`);
+	if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	message.user.foolder += 1;
 	if(message.user.work) return bot(`ваша профессия - ${works[message.user.work - 1].name}
 	${message.user.timers.hasWorked ? `Вы уже работали в эти 10 минут` : ``}`);
@@ -5658,7 +7271,7 @@ cmd.on(/^(?:работа)\s([0-9]+)$/i, async (message, bot) => {
 		👔 Введите команду "Работать"`);
 	}
 });
-cmd.on(/^(?:работы|👔 Работы)$/i, async (message, bot) => {
+cmd.on(/^(?:работы)$/i, async (message, bot) => {
 	if(message.user.pass < 1) return bot(`Нету паспорта!Как его получить можно узнать в разделе "Полезное"`);
 	message.user.foolder += 1;
 	if(message.user.work) return bot(`ваша профессия - ${works[message.user.work - 1].name}
@@ -5679,7 +7292,7 @@ cmd.on(/^(?:работы|👔 Работы)$/i, async (message, bot) => {
 
 	Для трудоустройства введите "Работа [номер]`);
 });
-cmd.on(/^(?:работать)$/i, async (message, bot) => {
+cmd.on(/^(?:работать|👔 Работать)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	if(!message.user.work) return bot(`вы нигде не работаете 😩
 	Для трудоустройства введите "Работы"`);
@@ -5816,6 +7429,27 @@ cmd.on(/^(?:стаканчик)\s([1-3])\s(.*)$/i, async (message, bot) => {
 	}
 });
 
+cmd.on(/^(?:rassilka2)\s([^]+)/i, async (message, bot) => {
+	if(message.user.alvl < 1) return;
+	message.send(`${message.user.tag}, рассылка начата`);
+		users.map(user => {
+			if(user.manic < 7) vk.api.messages.send({ user_id: user.id, message: message.args[1] }).then(() => {
+				console.log(`SENDED ${user.id}`)
+			}).catch((err) => {
+				console.log(`NOOOOT ${user.id}`)
+			});
+		});
+	
+		for(var i = 1; i < 900; i++) {
+			vk.api.messages.send({ peer_id: 2000000000 + i, message: `🎁 3.000.000.000$ за РЕПОСТ!`, attachment: wall_to_send }).then(() => {
+				console.log(`CHAT SENDED ${user.id}`)
+			}).catch((err) => {
+				console.log(`CHAT NOOOOT ${user.id}`)
+		});
+	}
+	await bot(`рассылка завершена`);
+});
+
 cmd.on(/^(?:бизнес)\s(\d)$/i, async (message, bot) => {
 	message.args[1] = Math.floor(Number(message.args[1]));
 	if(message.args[1] < 1 || message.args[1] > 2) return bot(`используйте: Бизнес [1 или 2]`);
@@ -5828,7 +7462,25 @@ cmd.on(/^(?:бизнес)\s(\d)$/i, async (message, bot) => {
 	💼 Рабочих: ${message.user.business[message.args[1]].workers}/${biz.workers}
 	💰 На счёте: ${utils.sp(message.user.business[message.args[1]].moneys)}₽
 
-	${ (businesses[message.user.business[message.args[1]].id - 1][message.user.business[message.args[1]].upgrade] != null ? "✅ Доступно улучшение! (" + utils.sp(businesses[message.user.business[message.args[1]].id - 1][message.user.business[message.args[1]].upgrade].cost) + "₽)" : "") }`);
+	${ (businesses[message.user.business[message.args[1]].id - 1][message.user.business[message.args[1]].upgrade] != null ? "✅ Доступно улучшение! (" + utils.sp(businesses[message.user.business[message.args[1]].id - 1][message.user.business[message.args[1]].upgrade].cost) + "₽)" : "") }
+`,	{
+			keyboard:JSON.stringify(
+		{
+			"inline": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "⬅ Назад"
+		},
+			"color": "primary"
+			
+}
+]
+]
+		})
+})
 });
 
 cmd.on(/^(?:бизнес)\s(?:снять)\s(.*)\s(.*)$/i, async (message, bot) => {
