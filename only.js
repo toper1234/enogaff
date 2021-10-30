@@ -10,6 +10,16 @@ user.setOptions({
 	token: '2' // токен ot страницы 
 });
 let giving = false;
+
+const quests = [
+
+{name: 'Выиграйте в трейде 3 раза подряд',reward: 3500000,actions: 3},
+{name: 'Угадайте стаканчик 3 раза подряд',reward: 7000000,actions: 3},
+{name: 'Угадайте кубик 2 раза подряд',reward: 20000000,actions: 2},
+{name: 'Выиграйте в казино 4 раза подряд',reward: 10000000,actions: 4}
+
+]
+
 const cars = [
 	{
 		name: 'Ferrari Enzo V5',
@@ -2546,8 +2556,8 @@ message.user.timers.bonus = true;
 if(prize === 1) 
 { 
 message.user.card += 1; 
-message.user.balance += 1000000; 
-return bot(`вы выиграли 10.000.00₽ и 1 Карту Героя`); 
+message.user.balance += 100000; 
+return bot(`вы выиграли 100000₽ и 1 Карту Героя`); 
 } 
 
 if(prize === 2) 
@@ -2599,28 +2609,28 @@ return bot(`вы выиграли 40👑 и 2 Карты Героя!`);
 if(prize === 9) 
 { 
 message.user.card += 1; 
-message.user.balance += 100000000; 
-return bot(`вы выиграли 100.000.000₽ на свой баланс счёт и 1 Карту Героя!`); 
+message.user.balance += 100000; 
+return bot(`вы выиграли 100.000₽ на свой баланс счёт и 1 Карту Героя!`); 
 } 
 if(prize === 10) 
 { 
 message.user.card += 2; 
-message.user.balance += 500000000; 
-return bot(`вы выиграли 500.000.000₽ на свой баланс счёт и 2 Карты Героя!`); 
+message.user.balance += 500000; 
+return bot(`вы выиграли 500.000₽ на свой баланс счёт и 2 Карты Героя!`); 
 } 
 
 if(prize === 11) 
 { 
 message.user.card += 1; 
-message.user.balance += 1000000000; 
-return bot(`вы выиграли 1.000.000.000₽ на свой баланс счёт и 1 Карту Героя!`); 
+message.user.balance += 100000; 
+return bot(`вы выиграли 100000₽ на свой баланс счёт и 1 Карту Героя!`); 
 } 
 
 if(prize === 12) 
 { 
 message.user.card += 3; 
-message.user.balance += 5000000000; 
-return bot(`вы выиграли 5.000.000.000₽ на свой баланс счёт и 3 Карты Героя!`); 
+message.user.balance += 500000; 
+return bot(`вы выиграли 500000₽ на свой баланс счёт и 3 Карты Героя!`); 
 } 
 });
 
@@ -3113,6 +3123,70 @@ cmd.on(/^(?:помощь|📚 Помощь|команды|меню|help|commands
 		})
 })
 });
+
+function progressQuest(user, id) {
+		if ( !('quests' in user) )
+			user.quests = quests.map(item => { return 0 })
+	
+		if ( user.quests[id] < quests[id].actions ) {
+			if ( user.quests[id] + 1 == quests[id].actions ) {
+				user.balance += quests[id].reward
+				user.quests[id] = quests[id].actions
+	vk.api.messages.send({
+	peer_id: user.id,
+	message: `[id${user.id}|${user.tag}], поздравляем, Вы выполнили квест! ☺
+	✅ На ваш счет было зачислено ${utils.sp(quests[id].reward)}$`
+	});
+			}
+			else 
+				user.quests[id]++
+		}
+	}
+	
+	
+	function resetQuest(user, id) {
+		if ( !('quests' in user) )
+			user.quests = quests.map(item => { return 0 })
+	
+		if ( user.quests[id] < quests[id].actions )
+			user.quests[id] = 0
+	}
+	
+	
+	cmd.on(/^(?:задания|квесты|👒 Квесты|квест)$/i, (message, bot) => {
+		if ( !('quests' in message.user) )
+			message.user.quests = quests.map(item => { return 0 })
+	
+		let lines = [`доступные квесты:`, '']
+	
+		quests.map( (quest, i) => {
+			lines.push(`${message.user.quests[i] >= quest.actions ? '✅' : '❌'} ${i + 1}. ${quest.name} (${utils.sp(quest.reward)}$)`) //message.user.quests.filter( (current, j) => i == j )[0] >= quest.action
+		})
+	
+		lines.push('', '🔑 Квесты обнуляются раз в 24 часа!')
+	
+		bot(lines.join('\n'))
+	})
+	
+	resetAtMidnight()
+	
+	function resetAtMidnight() {
+		var now = new Date();
+		var night = new Date(
+			now.getFullYear(),
+			now.getMonth(),
+			now.getDate() + 1,
+			0, 0, 0
+		);
+		var msToMidnight = night.getTime() - now.getTime();
+	
+		setTimeout(function() {
+			users.map(user => {
+				user.quests = quests.map(item => { return 0 })
+			})
+			resetAtMidnight();
+		}, msToMidnight);
+	}
 
 cmd.on(/^(?:открыть 1|сундук открыть 1|кейс открыть 1|📦 Кейс открыть 1)$/i, async (message, bot) => {
 	
@@ -4876,6 +4950,7 @@ cmd.on(/^(?:🎮 Игры|Игры)$/i, async (message, bot) => {
      🐠 Дайвинг - отправиться в плаванье
      🏹 Охота - Охота
      🎃 Хэллоуин
+	 👒 Квесты
      🎲 Кубик [1-6]
      🎰 Казино [сумма]
      📈 Трейд [вверх/вниз] [сумма]
@@ -4892,6 +4967,14 @@ cmd.on(/^(?:🎮 Игры|Игры)$/i, async (message, bot) => {
 				"type": "text",
 				"payload": "{\"button\": \"2\"}",
 				"label": "🐠 Дайвинг"
+		},
+			"color": "secondary"
+					},
+								{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "👒 Квесты"
 		},
 			"color": "secondary"
 					}],
