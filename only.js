@@ -1552,6 +1552,7 @@ keyboard:JSON.stringify(
 			emeralds: 0,
 			verify: 0,
 			pass: 0,
+			vipkir: 1,
 			coal: 0,
 			a_war: false,
 			iron: 0,
@@ -2322,7 +2323,7 @@ cmd.on(/^(?:убрать хейтеров)$/i, async (message, bot) => {
 		if(!Number(message.args[1]) || !message.args[1] || !message.args[2] || !users[message.args[1]]) return message.send(`🔸 » Проверьте вводимые данные.`);
 		vk.api.call("messages.send", {
 			peer_id: users[message.args[1]].id,
-			message: `👉 » Администратор: ${message.user.tag} ответил Вам:\n👉 ${message.args[2]}\n\n`
+			message: `👉 » Администратор ответил Вам:\n👉 ${message.args[2]}\n\n`
 		}).then((res) => {}).catch((error) => {console.log('ans error'); });	 
 		return message.send(`👉 » Ответ отправлен.`)
 	});
@@ -2347,7 +2348,7 @@ cmd.on(/^(?:jail)?\s([0-9]+)?\s?([0-9]+)\s([^]+)?/i, async (message, args, bot) 
 
 	vk.api.call('messages.send', {
 		peer_id: users[id].id,
-		message: `⏺ » ${message.user.tag} Посадил вас  в тюрьму на [${message.args[2]}] минут(ы). по причине ${message.args[3]}`
+		message: `⏺ » Администратор Посадил вас  в тюрьму на [${message.args[2]}] минут(ы). по причине ${message.args[3]}`
 	});
 	return message.send(`💰 » Вы посадили в тюрьму игрока [@id${users[message.args[1]].id}(${users[message.args[1]].tag})] на ${message.args[2]} минут`); 
 });
@@ -2509,6 +2510,20 @@ cmd.on(/^(?:вприву)\s?([0-9]+)?\s?([0-9]+)?/i, async (message, args, bot) 
 				message: `✅ » ${user.tag} Вам выдали должность: ${message.args[2].toString().replace(/0/gi, "Игрока").replace(/1/gi, "VIP'а").replace(/2/gi, "Премиума").replace(/3/gi, "Администратора").replace(/4/gi, "Кодера").replace(/5/gi, "Владельца")}`
 		}); 
 		return message.send(` 🔸 >> Вы выдали игроку [@id${users[message.args[1]].id}(${users[message.args[1]].tag})]\n🔸 >> Админ-уровень: ${message.args[2]} [${message.args[2].toString().replace(/0/gi, "Игрок").replace(/1/gi, "VIP").replace(/2/gi, "Премиум").replace(/3/gi, "Администратора").replace(/4/gi, "Кодера").replace(/5/gi, "Владельца")}]`);
+	});
+	
+	cmd.on(/^(?:вкирка)\s?([0-9]+)?\s?([0-9]+)?/i, async (message, args, bot) => {
+		let user = users.find(x=> x.uid === Number(message.args[1]));
+        if(message.user.alvl < 5) return message.send(`Вы не Администратор`)
+       if(!message.args[1] || !message.args[2]) return message.send(`🔸 >> Пример команды: вкирка [ID] [LVL(2)]`); 
+		if(message.args[2] > 3) return message.send(` 🔸 >> Максимальная вип-кирка 1!`)
+		if(!users[message.args[1]]) return message.send(`❎ » Такого игрока нет!`); 
+		users[message.args[1]].vipkir = Number(message.args[2]); 
+		vk.api.call('messages.send', {
+			peer_id: users[message.args[1]].id,
+				message: `✅ » ${user.tag} Вам выдали вип-кирку!`
+		}); 
+		return message.send(` 🔸 >> Вы выдали игроку [@id${users[message.args[1]].id}] вип-кирку!`);
 	});
 
 cmd.on(/^(?:забратьруб)\s?([0-9]+)?/i, async (message, args, bot) => {
@@ -3333,6 +3348,27 @@ cmd.on(/^(?:открыть 1|сундук открыть 1|кейс открыт
 		{
 			message.user.rating += rat;
 			return bot(`вы выиграли ${utils.sp(rat)} рейтинга 🔥`, 
+	{ 
+	keyboard:JSON.stringify( 
+	{
+	"inline": true,
+	"buttons": [ 
+	[{ 
+	"action": { 
+	"type": "text", 
+	"payload": "{}", 
+	"label": `📦 Кейс открыть 1` 
+	}, 
+	"color": "primary" 
+	}] 
+	] 
+	}) 
+	});
+		}
+			if(prize2 === 8)
+		{
+			message.user.vkirka += 2;
+			return bot(`вы выиграли ${utils.vkirka(vkirka)} вип-кирку 🔥`, 
 	{ 
 	keyboard:JSON.stringify( 
 	{
@@ -4652,7 +4688,7 @@ cmd.on(/^(?:кейс инфо 1)/i, async (message) => {
 				"action": {
 				"type": "text",
 				"payload": "{\"button\": \"2\"}",
-				"label": "Кейс инфо1"
+				"label": "Кейс инфо 1"
 		},
 			"color": "positive"
 					},
@@ -6159,7 +6195,94 @@ cmd.on(/^(?:шахта|⛏)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	message.user.opit += 3000;
 	if(message.user.exp < 1) return bot(`мало опыта!`);
-if(message.user.alvl <= 1) {
+if(message.user.vipkir <= 1) {
+	if(message.user.timers.mine) return bot(`прости, но ты уже работал(а) на шахте!
+		Шахта будет доступна в течении 1 дня.
+		
+		Ты можешь приобрести VIP - кирку в магазине!`, {
+			keyboard:JSON.stringify(
+		{
+			"inline": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "⛏"
+		},
+			"color": "secondary"
+					},
+		{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "Магазин"
+		},
+			"color": "primary"
+			
+}
+]
+]
+		})
+})
+
+	setTimeout(() => {
+		message.user.timers.mine = false;
+	}, 86400000);
+
+	message.user.timers.mine = true;
+}
+	const coals = utils.random(500);
+	const irons = utils.random(150);
+	const golds = utils.random(100);
+	const emeralds = utils.random(20);
+	const diamondss = utils.random(10);
+
+	message.user.coal += coals;
+	message.user.iron += irons;
+	message.user.gold += golds;
+	message.user.diamonds += diamondss;
+	message.user.emeralds += emeralds;
+
+	return bot(`в шахте, вы нашли:
+			&#128488; Угля: ${utils.sp(coals)}
+		&#11036; Железа: ${utils.sp(irons)}
+		&#128155; Золото: ${utils.sp(golds)}
+		&#128142; Алмазов: ${utils.sp(diamondss)}
+		&#128160; Изумрудов: ${utils.sp(emeralds)}
+		💥 Заработано Опыта: 3000`, {
+			keyboard:JSON.stringify(
+		{
+			"inline": true,
+			"buttons": [
+			[{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "⛏"
+		},
+			"color": "secondary"
+					},
+		{
+				"action": {
+				"type": "text",
+				"payload": "{\"button\": \"2\"}",
+				"label": "В меню"
+		},
+			"color": "primary"
+			
+}
+]
+]
+		})
+})
+});
+
+cmd.on(/^(?:шахта|⛏)$/i, async (message, bot) => {
+	message.user.foolder += 1;
+	message.user.opit += 3000;
+	if(message.user.exp < 1) return bot(`мало опыта!`);
+if(message.user.vipkir <= 1) {
 	if(message.user.timers.mine) return bot(`прости, но ты уже работал(а) на шахте!
 		Шахта будет доступна в течении 1 дня.`);
 
@@ -6214,7 +6337,6 @@ if(message.user.alvl <= 1) {
 		})
 })
 });
-
 
 cmd.on(/^(?:уведомления)\s(выкл|вкл)$/i, async (message, bot) => {
 	if(message.args[1].toLowerCase() === 'выкл')
@@ -6368,7 +6490,8 @@ cmd.on(/^(?:Тпередать)\s([0-9]+)\s(.*)$/i, async (message, bot) => {
 🔕 Введите "Уведомления выкл", если не хотите получать подобные сообщения` });
 	}
 });
-cmd.on(/^(?:рейтинг)$/i, async (message, bot) => {
+
+cmd.on(/^(?:👑 рейтинг|рейтинг)$/i, async (message, bot) => {
 	message.user.foolder += 1;
 	return bot(`ваш рейтинг: ${utils.sp(message.user.rating)}👑`);
 });
@@ -6411,6 +6534,7 @@ cmd.on(/^(?:🛒 Магазин|магазин)$/i, async (message, bot) => {
 
 📌 Остальное:
 
+   ⛏Кирки 
 ⠀⠀📱 Телефоны
 ⠀⠀🔋 Фермы
 ⠀⠀👑 Рейтинг [кол-во] - $250 млн
@@ -6421,7 +6545,6 @@ cmd.on(/^(?:🛒 Магазин|магазин)$/i, async (message, bot) => {
 🔎 Для покупки используйте "[категория] [номер]".
 ⠀ ⠀ Например: "${utils.pick(['Телефон 7', 'Машина 1', 'Ферма 2', 'Тапкоин 100', 'Рейтинг 10'])}"`);
 });
-
 
 cmd.on(/^(?:Статистика)$/i, async (message, bot) =>{
 	message.user.foolder += 1;
@@ -6672,6 +6795,27 @@ cmd.on(/^(?:Время|time)/i, async (msg, bot) => {
 ⏰ | Берлин/Мюнхен: ${new Date().getHours()-1}:${new Date().getMinutes()}
 ⏳ | Екатеринбург: ${new Date().getHours()+5}:${new Date().getMinutes()}
 ⏰ | Баку: ${new Date().getHours()+4}:${new Date().getMinutes()}`);
+});
+
+cmd.on(/^(?:кирки)\s?([0-9]+)?$/i, async (message, bot) => {
+		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
+	message.user.foolder += 1;
+	if(!message.args[1]) return bot(`⛏ VIP - кирка 
+
+🔎 Для покупки используйте "кирки 1"."`);
+
+	const sell = cars.find(x=> x.id === Number(message.args[1]));
+	if(!sell) return;
+	if(message.user.vipkir) return bot(`у вас уже есть кирка!`);
+
+	if(message.user.balance < sell.cost) return bot(`недостаточно денег`);
+	else if(message.user.balance >= sell.cost)
+	{
+		message.user.balance -= 300000000;
+		message.user.vipkir = 2;
+
+		return bot(`вы купили "VIP - кирку" за 300.000.000₽`);
+	}
 });
 
 cmd.on(/^(?:машины|машина)\s?([0-9]+)?$/i, async (message, bot) => {
@@ -6927,9 +7071,9 @@ cmd.on(/^(?:квартира|квартиры)\s?([0-9]+)?$/i, async (message, b
 	message.user.foolder += 1;
 		if(message.user.pass < 1) return bot(`У вас нет паспорта! Для того, чтобы получить его, напишите "получить паспорт"`);
 	if(!message.args[1]) return bot(`квартиры: 
-${message.user.realty.apartment === 1 ? '🔹' : '🔸'} 1. Чердак (15.000$)
+${message.user.realty.apartment === 1 ? '🔹' : '🔸'} 1. Чердак (15.000₽)
 ${message.user.realty.apartment === 2 ? '🔹' : '🔸'} 2. Квартира в общежитии (55.000₽)
-${message.user.realty.apartment === 3 ? '🔹' : '🔸'} 3. Однокомнатная квартира (175.000$₽)
+${message.user.realty.apartment === 3 ? '🔹' : '🔸'} 3. Однокомнатная квартира (175.000₽)
 ${message.user.realty.apartment === 4 ? '🔹' : '🔸'} 4. Двухкомнатная квартира (260.000₽)
 ${message.user.realty.apartment === 5 ? '🔹' : '🔸'} 5. Четырехкомнатная квартира (500.000₽)
 ${message.user.realty.apartment === 6 ? '🔹' : '🔸'} 6. Квартира в центре Москвы (1.600.000₽)
